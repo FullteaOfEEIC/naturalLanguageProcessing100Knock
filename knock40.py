@@ -28,6 +28,7 @@ if __name__=="__main__":
         for line in fp:
             tree = c.parse(line)
             parsed = tree.toString(CaboCha.FORMAT_LATTICE)
+
             parsed=parsed.split("\n")
             scentence=[]
             for p in parsed:
