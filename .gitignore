@@ -4,3 +4,6 @@ __pycache__/
 \.DS_Store
 
 stanford-corenlp-full-2018-10-05/
+
+artist.json
+
