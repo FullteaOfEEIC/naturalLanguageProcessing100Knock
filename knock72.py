@@ -18,6 +18,7 @@ def remove_stopwords(text):
 
 
 counter = collections.Counter()
+file_length=0
 
 with open("./sentiment.txt", "r") as fp:
     for line in fp:
@@ -26,6 +27,7 @@ with open("./sentiment.txt", "r") as fp:
         line = remove_stopwords(line)
         for word in line.split(" "):
             counter.update([stemmer.stemWord(word)])
+        file_length+=1
 
 wordlist = [w for w in counter if counter[w] >= 5]
 word2num = {}
