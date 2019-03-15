@@ -18,7 +18,7 @@ def remove_stopwords(text):
 
 
 counter = collections.Counter()
-file_length=0
+file_length = 0
 
 with open("./sentiment.txt", "r") as fp:
     for line in fp:
@@ -27,7 +27,7 @@ with open("./sentiment.txt", "r") as fp:
         line = remove_stopwords(line)
         for word in line.split(" "):
             counter.update([stemmer.stemWord(word)])
-        file_length+=1
+        file_length += 1
 
 wordlist = [w for w in counter if counter[w] >= 5]
 word2num = {}
@@ -48,7 +48,7 @@ with open("./sentiment.txt", "r") as fp:
         y.append(score)
         phai_i = [0 for i in range(len(word2num))]
         for word in line.split(" "):
-            word=stemmer.stemWord(word)
+            word = stemmer.stemWord(word)
             if word in word2num:
                 phai_i[word2num[word]] = 1
         phai.append(phai_i)

@@ -9,11 +9,11 @@ import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
 
-    thresholds=[]
-    accuracies=[]
-    precisions=[]
-    recalls=[]
-    f1s=[]
+    thresholds = []
+    accuracies = []
+    precisions = []
+    recalls = []
+    f1s = []
 
     for _threshold in tqdm(range(101)):
         threshold = _threshold / 100
@@ -42,9 +42,9 @@ if __name__ == "__main__":
         recalls.append(recall)
         f1s.append(f1)
 
-    plt.plot(thresholds,accuracies,label="accuracy")
-    plt.plot(thresholds,precisions,label="precision")
-    plt.plot(thresholds,recalls,label="recall")
-    plt.plot(thresholds,f1s,label="f1")
+    plt.plot(thresholds, accuracies, label="accuracy")
+    plt.plot(thresholds, precisions, label="precision")
+    plt.plot(thresholds, recalls, label="recall")
+    plt.plot(thresholds, f1s, label="f1")
     plt.legend()
     plt.show()
