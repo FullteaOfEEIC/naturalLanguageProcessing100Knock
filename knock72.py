@@ -46,6 +46,7 @@ with open("./sentiment.txt", "r") as fp:
         y.append(score)
         phai_i = [0 for i in range(len(word2num))]
         for word in line.split(" "):
+            word=stemmer.stemWord(word)
             if word in word2num:
                 phai_i[word2num[word]] = 1
         phai.append(phai_i)
