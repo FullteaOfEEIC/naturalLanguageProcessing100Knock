@@ -29,7 +29,7 @@ with open("./sentiment.txt", "r") as fp:
             counter.update([stemmer.stemWord(word)])
         file_length += 1
 
-wordlist = [w for w in counter if counter[w] >= 5]
+wordlist = [w for w in counter if counter[w] >= 3]
 word2num = {}
 num2word = {}
 for i, word in enumerate(wordlist):
