@@ -80,7 +80,7 @@ def score(model, train_x, train_y, test_x, test_y, threshold=0.5):
             TN += 1
 
     accuracy = (TP + TN) / (TP + FP + FN + TN)
-
+    
     if TP + FP == 0:
         precision = 0
     else:

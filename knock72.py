@@ -20,6 +20,8 @@ def remove_stopwords(text):
 counter = collections.Counter()
 file_length = 0
 
+file_length=0
+
 with open("./sentiment.txt", "r") as fp:
     for line in fp:
         score = int(line[:2:])
