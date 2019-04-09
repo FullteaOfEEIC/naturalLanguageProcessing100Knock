@@ -8,7 +8,7 @@ db = plyvel.DB("./vector1.ldb", create_if_missing=True)
 
 def create_db():
     retval={}
-    with open("corpushead.txt", "r") as fp:
+    with open("corpus.txt", "r") as fp:
         for line in tqdm(fp):
             words = line.lower().strip().split(" ")
             len_words = len(words)
@@ -23,10 +23,12 @@ def create_db():
                 for _c in cs:
                     c[_c] = c.get(_c, 0) + 1
                 retval[word]=tmp
+    return retval
+
 
 def save_db():
     dict=create_db()
-    for key in dict:
+    for key in tqdm(dict):
         db.put(str(key).encode("utf-8"),json.dumps(dict[key]).encode("utf-8"))
 
 
