@@ -50,3 +50,4 @@ if __name__ == "__main__":
                 for country in countries:
                     line = re.sub(country, countries[country], line)
                 fp_write.write(line)
+                fp_write.write("\n")
