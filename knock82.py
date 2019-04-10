@@ -30,6 +30,7 @@ def save_db():
     dict=create_db()
     for key in tqdm(dict):
         db.put(str(key).encode("utf-8"),json.dumps(dict[key]).encode("utf-8"))
+    del dict
 
 
 

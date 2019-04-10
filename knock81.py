@@ -49,5 +49,5 @@ if __name__ == "__main__":
             for line in tqdm(fp_read):
                 for country in countries:
                     line = re.sub(country, countries[country], line)
+                line=line.lower()
                 fp_write.write(line)
-                fp_write.write("\n")
