@@ -171,7 +171,7 @@ if __name__ == "__main__":
                 line = re.sub("\s", " ", line)
                 line = zen2han(line, kana=False)
                 line = han2zen(line, ascii_=False, digit=False, kakko=False)
-                line = re.sub("[\.\,\!\?\;\:\(\)\[\]\'\"\”\“\‘\’\—\\\#\¥\<\>\=\•\~\^\&\%\/\-\_\@\+\$\|\ˁ\ˆ\ˇ\ˈ\ʿ\ʾ\ʼ\ʔ\ʕ]", " ", line)
+                line = re.sub("[\.\,\!\?\;\:\(\)\[\]\'\"\”\“\‘\’\—\\\#\¥\<\>\=\•\~\^\&\%\/\-\_\@\+\$\|\ˁ\ˆ\ˇ\ˈ\ʿ\ʾ\ʼ\ʔ\ʕ\–\…\†]", " ", line)
                 line = re.sub(" +", " ", line)
                 line = re.sub("ﬁ","fi",line)
                 line = re.sub("ﬂ","fl",line)
