@@ -117,6 +117,7 @@ for k, v in kakko_zh_table.items():
     kakko_hz_table[v] = k
 
 
+
 def zen2han(text="", ascii_=True, digit=True, kana=True, kakko=True, ignore=()):
     result = []
     for c in text:
@@ -137,6 +138,7 @@ def zen2han(text="", ascii_=True, digit=True, kana=True, kakko=True, ignore=()):
         else:
             result.append(c)
     return "".join(result)
+
 
 
 def han2zen(text, ascii_=True, digit=True, kana=True, kakko=True, ignore=()):
@@ -164,19 +166,20 @@ def han2zen(text, ascii_=True, digit=True, kana=True, kakko=True, ignore=()):
 
 
 if __name__ == "__main__":
-
+    mark=re.compile("[\.\,\!\?\;\:\(\)\[\]\'\"\”\“\‘\’\—\\\#\¥\<\>\=\•\~\^\&\%\/\-\_\@\+\$\|\ˁ\ˆ\ˇ\ˈ\ʿ\ʾ\ʼ\ʔ\ʕ\–\…\†]")
+    space=re.compile("\s")
+    number=re.compile("\d")
     with open("enwiki-20150112-400-r10-105752.txt", "r") as fp_read:
         with open("corpus_tmp.txt", "w") as fp_write:
             for line in tqdm(fp_read):
-                line = re.sub("\s", " ", line)
+                line = space.sub(" ", line)
                 line = zen2han(line, kana=False)
                 line = han2zen(line, ascii_=False, digit=False, kakko=False)
-                line = re.sub("[\.\,\!\?\;\:\(\)\[\]\'\"\”\“\‘\’\—\\\#\¥\<\>\=\•\~\^\&\%\/\-\_\@\+\$\|\ˁ\ˆ\ˇ\ˈ\ʿ\ʾ\ʼ\ʔ\ʕ\–\…\†]", " ", line)
-                line = re.sub(" +", " ", line)
-                line = re.sub("ﬁ","fi",line)
-                line = re.sub("ﬂ","fl",line)
-                line = re.sub("œ","oe",line)
-
+                line = mark.sub(" ", line)
+                line = line.replace("ﬁ", "fi")
+                line = line.replace("ﬂ", "fl")
+                line = line.replace("œ", "oe")
+                line = number.sub("0", line)
 
                 fp_write.write(line)
                 fp_write.write("\n")

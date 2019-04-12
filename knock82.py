@@ -6,6 +6,7 @@ import json
 db = plyvel.DB("./vector1.ldb", create_if_missing=True)
 
 
+
 def create_db():
     retval={}
     with open("corpus.txt", "r") as fp:
@@ -15,13 +16,14 @@ def create_db():
             for i, word in enumerate(words):
                 tmp = retval.get(word,None)
                 if tmp == None:
-                    tmp = {"d": random.randint(1, 5), "c": {}}
+                    tmp = {"d": random.randint(1, 5),"count":1, "c": {}}
                 d = tmp["d"]
                 c = tmp["c"]
                 cs = words[max(0, i - d):i:] + \
                     words[i + 1:min(i + d, len_words):]
                 for _c in cs:
                     c[_c] = c.get(_c, 0) + 1
+                tmp["count"]=tmp["count"]+1
                 retval[word]=tmp
     return retval
 
